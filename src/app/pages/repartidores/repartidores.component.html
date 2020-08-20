@@ -1,0 +1,252 @@
+<div class="col-md-4 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    <h2>REPARTIDOR</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active" data-toggle="modal" data-target="#myModal"><a d><i class="fa fa-inbox"></i>NUEVO
+                    <div class="clearfix"></div></a>
+            </li>
+
+        </ul>
+    </nav>
+
+</div>
+<!-- tab content -->
+<div class="col-md-8 tab-content tab-content-in">
+    <div class="tab-pane active text-style" id="tab1">
+        <div class="inbox-right">
+
+            <div class="mailbox-content">
+                <div class="mail-toolbar clearfix">
+
+                    <div class="float-right">
+
+
+                        <div class="btn-group">
+                            <!--   <a  [routerLink]="['/NewPedido']"  class="btn btn-default">Nuevo <i class="fa fa-file"></i></a>
+                          <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>-->
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <table class="table">
+                    <thead>
+                        <td class="table-text">
+                            <h6>Cedula</h6>
+
+                        </td>
+                        <td class="table-text">
+                            <h6>Nombres</h6>
+
+                        </td>
+                        <td class="table-text">
+                            <h6>Email</h6>
+
+                        </td>
+                        <td class="table-text">
+                            
+
+                        </td>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row" *ngFor="let item of items | async" >
+                            <td *ngIf="item.Rol=='REPARTIDOR'" >
+                                <h6> {{item.Cedula}}</h6>
+                            </td>
+                            <td *ngIf="item.Rol=='REPARTIDOR'" class="table-text">
+                                <h6> {{item.Nombres}}</h6>
+
+                            </td>
+
+                            <td *ngIf="item.Rol=='REPARTIDOR'">
+                                {{item.Email}} 
+                            </td>
+
+                            <td *ngIf="item.Rol=='REPARTIDOR'">
+                               
+                                <a   data-toggle="modal" data-target="#myModalEdit"  (click)="selectEdit(item)" > 
+                                    <i class="fa fa-pencil-square" ></i>
+                                </a>
+                                
+                            </td>
+                            <!--
+                            <td *ngIf="item.Rol=='REPARTIDOR'">
+                               
+                                
+                                <a (click)="deleteItem(item.key)" >
+                                     <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                            -->
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">Nuevo Repartidor</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Cedula</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control1 input-sm" id="txtCedulaNew"
+                                    placeholder="Cedula">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Nombres</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1 input-sm" id="txtNombresNew"
+                                    placeholder="Nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Email</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control1 input-sm" id="txtEmailNew"
+                                 placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Contraseña</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control1 input-sm" id="txtPass"
+                                 >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Confirme</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control1 input-sm" id="txtPassConfir"
+                                 >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+               
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="GuardarNewProducto()">Guardar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">Editar Repartidor</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Cedula</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control1 input-sm" id="txtCedulaEdit"
+                                    placeholder="Cedula">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Nombres</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1 input-sm" id="txtNombresEdit"
+                                    placeholder="Nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Email</label>
+                            <div class="col-sm-8">
+                                <input readonly="true" type="email" class="form-control1 input-sm" id="txtEmailedit"
+                                 placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Contraseña</label>
+                            <div class="col-sm-8">
+                                <button type="button" id="btnCambio"
+                                 class="btn btn-primary" (click)="sendMail()">Enviar mail cambio de contraseña</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="EditarProductoProducto()">Guardar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

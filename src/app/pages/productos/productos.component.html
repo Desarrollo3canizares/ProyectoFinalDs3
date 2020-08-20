@@ -1,0 +1,220 @@
+<div class="col-md-4 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    <h2>PRODUCTOS</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active" data-toggle="modal" data-target="#myModal"><a d><i class="fa fa-inbox"></i>NUEVO
+                    <div class="clearfix"></div></a>
+            </li>
+
+        </ul>
+    </nav>
+
+</div>
+<!-- tab content -->
+<div class="col-md-8 tab-content tab-content-in">
+    <div class="tab-pane active text-style" id="tab1">
+        <div class="inbox-right">
+
+            <div class="mailbox-content">
+                <div class="mail-toolbar clearfix">
+
+                    <div class="float-right">
+
+
+                        <div class="btn-group">
+                            <!--   <a  [routerLink]="['/NewPedido']"  class="btn btn-default">Nuevo <i class="fa fa-file"></i></a>
+                          <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>-->
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <table class="table">
+                    <thead>
+                        <td class="table-text">
+                           
+
+                        </td>
+                        <td class="table-text">
+                            <h6>Nombre</h6>
+
+                        </td>
+                        <td class="table-text">
+                            <h6>Precio</h6>
+
+                        </td>
+                        <td class="table-text">
+                            
+
+                        </td>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row" *ngFor="let item of items | async">
+                            <td class="table-img">
+                                <img width="70px" height="70px" src="{{item.img}}" alt="" />
+                            </td>
+                            <td class="table-text">
+                                <h6> {{item.Nombre}}</h6>
+
+                            </td>
+
+                            <td>
+                                <span class="fam">{{item.Precio}} $ </span>
+                            </td>
+
+                            <td>
+                               
+                                <a   data-toggle="modal" data-target="#myModalEdit"  (click)="selectEdit(item)" > 
+                                    <i class="fa fa-pencil-square" ></i>
+                                </a>
+                                
+                            </td>
+                            <td>
+                               
+                                
+                                <a (click)="deleteItem(item.key)" >
+                                     <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">Nuevo Productos</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Nombre</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1 input-sm" id="txtNombreNew"
+                                    placeholder="Nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Precio</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1 input-sm" id="txtPrecioNew" placeholder="0.00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Imagen</label>
+                            <div class="col-sm-8">
+                                <input type="file" id="fileImgNew" (change)="onUploadChange($event)"
+                                    accept=".png, .jpg, .jpeg, .pdf">
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="GuardarNewProducto()">Guardar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">Editar Producto</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Nombre</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1 input-sm" id="txtNombreEdit" placeholder="Nombre"
+                                  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Precio</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control1 input-sm" id="txtPrecioEdit" placeholder="0.00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="smallinput" class="col-sm-2 control-label label-input-sm">Imagen</label>
+                            <div class="col-sm-8">
+                                <img id="imgEdit" width="200px" height="200px" src="{{base64textStringG}}">
+                                <input type="file" id="fileImgedit" (change)="onUploadChange($event)"
+                                    accept=".png, .jpg, .jpeg, .pdf">
+                            </div>
+                            
+                                
+                            
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="EditarProductoProducto()">Guardar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,101 @@
+<div class="col-md-4 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    <h2>DATOS</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active"><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Fecha: {{fecha}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Total:{{total.toFixed(2)}} $</a></li>
+            <!-- <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Entregado</a> </li>
+-->
+
+        </ul>
+    </nav>
+    
+
+</div>
+<!-- tab content -->
+<div class="col-md-8 tab-content tab-content-in">
+    <div class="tab-pane active text-style" id="tab1">
+        <div class="inbox-right">
+
+            <div class="mailbox-content">
+                <div class="mail-toolbar clearfix">
+                    <div class="float-right">
+
+
+                        <div class="btn-group">
+                          
+                            <!-- <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>-->
+                            <button  (click)="Verpdf()" type="button" class="btn btn-primary btn-lg" >
+                                PDF 
+                               </button>
+                        </div>
+
+
+                    </div>
+                    
+
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="table-row"  >
+                            
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                <h6>Producto</h6>
+                            </td>
+                            <td>
+                                <h6>Cant.</h6>
+                            </td>
+                            <td>
+                                <h6>Precio</h6>
+                            </td>
+                            <td>
+                                <h6>Sub Total</h6>
+                            </td>
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--*ngFor="let itemP of listaDetalle " -->
+                        <tr class="table-row" *ngFor="let itemP of listaDetalle " >
+                            
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                {{itemP.Nombre}}
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.Cantidad}}</span>
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.Precio.toFixed(2)}}$ </span>
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.subTotal.toFixed(2)}}$ </span>
+                            </td>
+
+                           
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
