@@ -1,0 +1,191 @@
+<div class="col-md-6 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    
+    <h2>CLIENTE</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active"><a data-toggle="tab"><i class="fa fa-user"></i>Cedula: {{cliente.__zone_symbol__value.Cedula}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-user"></i>Nombre: {{cliente.__zone_symbol__value.Nombres}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-globe"></i>Direccion: {{cliente.__zone_symbol__value.Direccion}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-building"></i>Establecimiento: {{cliente.__zone_symbol__value.Establecimiento}}</a></li>
+            <!-- <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Entregado</a> </li>
+-->
+        </ul>
+    </nav>
+   
+    <button  type="button" class="btn btn-lg btn-primary" id="btnEntregar" style="width: 100%;" (click)="guardar()" >GUARDAR</button>
+
+</div>
+<div class="col-md-6 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    <h2>DATOS</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active"><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Fecha: {{fecha}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Total:{{total.toFixed(2)}} $</a></li>
+            <!-- <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Entregado</a> </li>
+-->
+
+        </ul>
+    </nav>
+    <h2>REPARTIDOR </h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            
+            <li class="active">
+                <a data-toggle="tab">
+                    <i class="fa fa-user"></i>
+                    Cedula: {{CedulaRepartidor}}
+                    <button style="float: right;" type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">
+                        SELECCIONAR <i class="fa fa-plus-circle"></i>
+                       </button>
+                </a>
+                
+            </li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-user"></i>Nombre: {{NombreRepartidor}}</a></li>
+            
+        </ul>
+    </nav>
+
+    
+   
+    
+
+</div>
+<!-- tab content -->
+<div class="col-md-12 tab-content tab-content-in">
+    <div class="tab-pane active text-style" id="tab1">
+        <div class="inbox-right">
+
+            <div class="mailbox-content">
+                <div class="mail-toolbar clearfix">
+
+                    
+
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="table-row"  >
+                            
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                <h6>Producto</h6>
+                            </td>
+                            <td>
+                                <h6>Cant.</h6>
+                            </td>
+                            <td>
+                                <h6>Precio</h6>
+                            </td>
+                            <td>
+                                <h6>Sub Total</h6>
+                            </td>
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--*ngFor="let itemP of listaDetalle " -->
+                        <tr class="table-row" *ngFor="let itemP of listaDetalle " >
+                            
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                {{itemP.Nombre}}
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.Cantidad}}</span>
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.Precio}}$ </span>
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.subTotal.toFixed(2)}}$ </span>
+                            </td>
+
+                           
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title">Lista de Repartidores</h2>
+            </div>
+            <div class="modal-body" *ngIf="items$ | async; let items; " >
+                
+                <table class="table">
+                    <thead>
+                        <td class="table-text">
+                            NOMBRE
+                        </td>
+                        <td class="table-text">
+                            CEDULA
+                        </td>
+                    </thead>
+                    <tbody>
+                        <tr data-dismiss="modal" class="table-row" *ngFor="let item of listFiltrada"  
+                        (click)="asignar(item.payload.val().Nombres, item.payload.val().Cedula,item.payload.key)"  >
+                            <td class="table-img">
+                                {{ item.payload.val().Nombres }}
+                            </td>
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                {{ item.payload.val().Cedula }}
+                            </td>
+                            
+
+
+                            <td>
+                                <i class="fa fa-plus-square icon-state-warning"></i>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

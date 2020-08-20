@@ -1,0 +1,79 @@
+<div class="col-md-4 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    <h2>FILTRAR</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active"><a (click)="filtrar('ENVIADO')" data-toggle="tab"><i class="fa fa-inbox"></i>Enviado
+                    <div class="clearfix"></div></a>
+            </li>
+            <li class=""><a (click)="filtrar('ASIGNADO')" data-toggle="tab"><i
+                        class="fa fa-paper-plane-o"></i>Asignado</a></li>
+            <li class=""><a (click)="filtrar('ENTREGADO')" data-toggle="tab"><i class="fa fa-star-o"></i>Entregado</a>
+            </li>
+            <li class=""><a (click)="filtrar('')" data-toggle="tab"><i class="fa fa-star-o"></i>Todo</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+<!-- tab content -->
+<div class="col-md-8 tab-content tab-content-in">
+    <div class="tab-pane active text-style" id="tab1">
+        <div class="inbox-right">
+
+            <div class="mailbox-content" *ngIf="items$ | async; let items; ">
+                <div class="mail-toolbar clearfix">
+                    
+                    <div class="float-right">
+                        
+
+                        <div class="btn-group">
+                           <!--   <a  [routerLink]="['/NewPedido']"  class="btn btn-default">Nuevo <i class="fa fa-file"></i></a>
+                          <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>-->
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr class="table-row" *ngFor="let item of listFiltrada">
+                           
+                            <td class="table-text">
+                                <h6> {{ item.data.payload.val().Fecha }}</h6>
+                                <h6>{{ item.data.payload.val().Total.toFixed(2) }} $</h6>
+                            </td>
+                            <td class="table-text">
+                                <h6> {{ item.User.__zone_symbol__value.Nombres }}</h6>
+                                <h6>{{  item.User.__zone_symbol__value.Cedula }} </h6>
+                            </td>
+                            <td>
+                                <span class="fam">{{ item.data.payload.val().Estado }} </span>
+                            </td>
+
+
+                            <td>
+                               <a [routerLink]="['/AsignarPedido/',item.data.payload.key]">
+                                <i  class="fa fa-pencil-square"></i>
+                            </a> 
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

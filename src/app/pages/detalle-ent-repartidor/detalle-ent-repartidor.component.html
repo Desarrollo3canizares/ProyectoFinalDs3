@@ -1,0 +1,145 @@
+<div class="col-md-6 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    
+    <h2>CLIENTE</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active"><a data-toggle="tab"><i class="fa fa-user"></i>Cedula: {{cliente.__zone_symbol__value.Cedula}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-user"></i>Nombre: {{cliente.__zone_symbol__value.Nombres}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-globe"></i>Direccion: {{cliente.__zone_symbol__value.Direccion}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-building"></i>Establecimiento: {{cliente.__zone_symbol__value.Establecimiento}}</a></li>
+            <!-- <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Entregado</a> </li>
+-->
+        </ul>
+    </nav>
+   
+    <button  type="button" id="btnEntregar" class="btn btn-lg btn-primary" style="width: 100%;" (click)="guardar()" >ENTREGAR</button>
+
+</div>
+<div class="col-md-6 compose">
+    <!-- Input Group
+    <form action="#" method="GET">
+        <div class="input-group input-group-in">
+            <input type="text" name="search" class="form-control2 input-search" placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form> -->
+    <h2>DATOS</h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            <li class="active"><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Fecha: {{fecha}}</a></li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Total:{{total.toFixed(2)}} $</a></li>
+            <!-- <li class=""><a data-toggle="tab"><i class="fa fa-arrow-right"></i>Entregado</a> </li>
+-->
+
+        </ul>
+    </nav>
+    <h2>REPARTIDOR </h2>
+    <nav class="nav-sidebar">
+        <ul class="nav tabs">
+            
+            <li class="active">
+                <a data-toggle="tab">
+                    <i class="fa fa-user"></i>
+                    Cedula: {{this.repartidor.__zone_symbol__value.Cedula}}
+                    
+                </a>
+                
+            </li>
+            <li class=""><a data-toggle="tab"><i class="fa fa-user"></i>Nombre: {{repartidor.__zone_symbol__value.Nombres}}</a></li>
+            
+        </ul>
+    </nav>
+
+    
+   
+    
+
+</div>
+<!-- tab content -->
+<div class="col-md-12 tab-content tab-content-in">
+    <div class="tab-pane active text-style" id="tab1">
+        <div class="inbox-right">
+
+            <div class="mailbox-content">
+                <div class="mail-toolbar clearfix">
+                    <div class="btn-group">
+                          
+                        <!-- <a class="btn btn-default"><i class="fa fa-angle-right"></i></a>-->
+                        <button  (click)="Verpdf()" type="button" class="btn btn-primary btn-lg" >
+                            PDF 
+                           </button>
+                    </div>
+                    
+
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="table-row"  >
+                            
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                <h6>Producto</h6>
+                            </td>
+                            <td>
+                                <h6>Cant.</h6>
+                            </td>
+                            <td>
+                                <h6>Precio</h6>
+                            </td>
+                            <td>
+                                <h6>Sub Total</h6>
+                            </td>
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--*ngFor="let itemP of listaDetalle " -->
+                        <tr class="table-row" *ngFor="let itemP of listaDetalle " >
+                            
+                            <td class="table-text">
+                                <!--
+                                <h6> {{ item.payload.val().Fecha }}</h6>
+                                <p>{{ item.payload.val().Total }}</p>-->
+                                {{itemP.Nombre}}
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.Cantidad}}</span>
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.Precio}}$ </span>
+                            </td>
+                            <td>
+                                <span class="fam">{{itemP.subTotal}}$ </span>
+                            </td>
+
+                           
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+
+

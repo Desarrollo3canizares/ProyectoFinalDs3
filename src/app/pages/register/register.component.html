@@ -1,0 +1,46 @@
+<div class="login">
+    <!--<h1><a href="index.html">Minimal </a></h1>-->
+    <div class="login-bottom">
+        <h2>Registrar</h2>
+        <div class="col-md-6">
+            <div class="login-mail">
+                <input type="number" id="txtECedulaReg" placeholder="Cedula" required="">
+                
+            </div>
+            <div class="login-mail">
+                <input type="text" id="txtENombreReg" placeholder="Nombre" required="">
+                
+            </div>
+            <div class="login-mail">
+                <input type="text" id="txtEEstablecimientoReg" placeholder="Empresa" required="">
+                
+            </div>
+            <div class="login-mail">
+                <input type="text" id="txtEDireccionReg" placeholder="Direccion" required="">
+                
+            </div>
+            <div class="login-mail">
+                <input type="text" id="txtEmailReg" placeholder="Email" required="">
+                <i class="fa fa-envelope"></i>
+            </div>
+            <div class="login-mail">
+                <input type="password" id="txtPass1Reg" placeholder="Password" required="">
+                <i class="fa fa-lock"></i>
+            </div>
+            <div class="login-mail">
+                <input type="password" id="txtPass2Reg" placeholder="Repita password" required="">
+                <i class="fa fa-lock"></i>
+            </div>
+              
+
+        </div>
+        <div class="col-md-6 login-do">
+            <label class="hvr-shutter-in-horizontal login-sub">
+                <input type="submit" value="Registrar" (click)="clicRegistrar()">
+                </label>
+                <p>Ya estas registrado</p>
+            <a (click)="mostarLogin(true)" class="hvr-shutter-in-horizontal">Login</a>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

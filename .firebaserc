@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyectodesarrollo3-196a3": {
+      "hosting": {
+        "ProyDesarrollo3": [
+          "proyectodesarrollo3-196a3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyectodesarrollo3-196a3"
+  }
+}
